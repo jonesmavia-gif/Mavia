@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ethans Hotel · 5-Star Luxury in Gatunga, Kenya</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Google Fonts: Playfair Display + Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ----- RESET & VARIABLES ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8d5a3;
+      --dark: #1a1a1a;
+      --dark-soft: #2c2c2c;
+      --light: #f9f7f2;
+      --gray: #6b6b6b;
+      --white: #ffffff;
+      --shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+      --radius: 12px;
+      --transition: all 0.3s ease;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-padding {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: 2.8rem;
+      text-align: center;
+      margin-bottom: 12px;
+      color: var(--dark);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--gray);
+      max-width: 600px;
+      margin: 0 auto 48px;
+    }
+
+    .gold-accent {
+      color: var(--gold);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 40px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: #b8963a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(201, 168, 76, 0.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+    }
+
+    .btn-outline:hover {
+      background: var(--white);
+      color: var(--dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-dark {
+      background: var(--dark);
+      color: var(--white);
+    }
+
+    .btn-dark:hover {
+      background: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    /* ----- TOP BAR ----- */
+    .top-bar {
+      background: var(--dark);
+      color: var(--light);
+      font-size: 0.85rem;
+      padding: 8px 0;
+      border-bottom: 2px solid var(--gold);
+    }
+
+    .top-bar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .top-bar a {
+      color: var(--gold-light);
+      margin: 0 12px;
+      transition: var(--transition);
+    }
+
+    .top-bar a:hover {
+      color: var(--gold);
+    }
+
+    .top-bar .social-icons a {
+      margin: 0 6px;
+      font-size: 0.9rem;
+    }
+
+    /* ----- HEADER / NAV ----- */
+    header {
+      background: var(--white);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--dark);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--white) !important;
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-weight: 600;
+    }
+
+    .nav-cta::after {
+      display: none !important;
+    }
+
+    .nav-cta:hover {
+      background: #b8963a !important;
+      color: var(--white) !important;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: var(--dark);
+    }
+
+    /* ----- HERO (UPDATED) ----- */
+    .hero {
+      background: linear-gradient(135deg, rgba(26, 26, 26, 0.7) 0%, rgba(26, 26, 26, 0.4) 100%),
+        url('data:image/webp;base64,PASTE_LONG_STRING_HERE') center/cover no-repeat;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      color: var(--white);
+      text-align: center;
+      position: relative;
+    }
+
+    /* ----- BOOKING WIDGET ----- */
+    .booking-widget {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 32px 40px;
+      margin-top: 48px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .booking-widget .field {
+      flex: 1 1 140px;
+      min-width: 120px;
+    }
+
+    .booking-widget label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gray);
+      margin-bottom: 4px;
+    }
+
+    .booking-widget input,
+    .booking-widget select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1.5px solid #e0ddd8;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--dark);
+      transition: var(--transition);
+    }
+
+    .booking-widget input:focus,
+    .booking-widget select:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15);
+    }
+
+    .booking-widget .btn {
+      flex: 0 0 auto;
+      padding: 12px 40px;
+      background: var(--gold);
+      color: var(--white);
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .booking-widget .btn:hover {
+      background: #b8963a;
+    }
+
+    /* ----- AMENITIES ----- */
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+      margin-top: 16px;
+    }
+
+    .amenity-card {
+      background: var(--white);
+      padding: 32px 20px;
+      border-radius: var(--radius);
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border-bottom: 4px solid transparent;
+    }
+
+    .amenity-card:hover {
+      transform: translateY(-6px);
+      border-bottom-color: var(--gold);
+    }
+
+    .amenity-card i {
+      font-size: 2.6rem;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .amenity-card h4 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      margin-bottom: 4px;
+    }
+
+    .amenity-card p {
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+
+    /* ----- ROOMS PREVIEW ----- */
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+    }
+
+    .room-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .room-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .room-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .room-card .room-info {
+      padding: 24px;
+    }
+
+    .room-card .room-info h3 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .room-card .room-info p {
+      color: var(--gray);
+      font-size: 0.95rem;
+      margin: 8px 0 12px;
+    }
+
+    .room-card .room-info .price {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--gold);
+    }
+
+    .room-card .room-info .price span {
+      font-weight: 400;
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+
+    .room-card .room-info .btn {
+      margin-top: 12px;
+      padding: 10px 28px;
+      font-size: 0.9rem;
+    }
+
+    /* ----- ABOUT ----- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      height: 400px;
+      object-fit: cover;
+    }
+
+    .about-text h2 {
+      font-size: 2.6rem;
+      margin-bottom: 16px;
+    }
+
+    .about-text p {
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+
+    .about-text .feature-list {
+      list-style: none;
+      margin-top: 16px;
+    }
+
+    .about-text .feature-list li {
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .about-text .feature-list i {
+      color: var(--gold);
+      font-size: 1.1rem;
+    }
+
+    /* ----- TESTIMONIALS ----- */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      padding: 32px 24px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .testimonial-card .stars {
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .testimonial-card blockquote {
+      font-style: italic;
+      color: var(--dark-soft);
+      font-size: 1rem;
+    }
+
+    .testimonial-card .author {
+      margin-top: 16px;
+      font-weight: 600;
+    }
+
+    .testimonial-card .author span {
+      font-weight: 400;
+      color: var(--gray);
+      font-size: 0.85rem;
+    }
+
+    /* ----- SOCIAL FEED ----- */
+    .social-feed {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .social-feed a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      border-radius: 50px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      font-weight: 500;
+    }
+
+    .social-feed a:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .social-feed a i {
+      font-size: 1.4rem;
+    }
+
+    .social-feed .fb i { color: #1877f2; }
+    .social-feed .ig i { color: #e4405f; }
+    .social-feed .google i { color: #ea4335; }
+
+    /* ----- FOOTER ----- */
+    footer {
+      background: var(--dark);
+      color: var(--light);
+      padding: 60px 0 30px;
+    }
+
+    footer .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    footer h4 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+      color: var(--gold);
+    }
+
+    footer p, footer a {
+      color: #aaa;
+      font-size: 0.95rem;
+      line-height: 2;
+    }
+
+    footer a:hover {
+      color: var(--gold);
+    }
+
+    footer .footer-bottom {
+      border-top: 1px solid #333;
+      padding-top: 24px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    /* ----- RESPONSIVE ----- */
+    @media (max-width: 992px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 3rem; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: var(--white);
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        padding: 24px;
+        box-shadow: var(--shadow);
+        gap: 16px;
+      }
+      .nav-links.open { display: flex; }
+      .hamburger { display: block; }
+      .hero h1 { font-size: 2.4rem; }
+      .hero { min-height: 70vh; }
+      .booking-widget {
+        padding: 24px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .booking-widget .field { flex: 1 1 auto; }
+      .section-title { font-size: 2rem; }
+      .top-bar .container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2rem; }
+      .hero-buttons .btn {
+        width: 100%;
+        text-align: center;
+      }
+      .rooms-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== TOP BAR ===== -->
+  <div class="top-bar">
+    <div class="container">
+      <div>
+        <i class="fas fa-map-marker-alt" style="color:var(--gold);"></i> Kenya, Gatunga
+        <a href="tel:+254700000000"><i class="fas fa-phone"></i> +254 700 000 000</a>
+        <a href="mailto:info@ethanshotel.com"><i class="fas fa-envelope"></i> info@ethanshotel.com</a>
+      </div>
+      <div class="social-icons">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Google"><i class="fab fa-google"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="container">
+      <div class="logo">Ethans <span>Hotel</span></div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#rooms">Rooms</a></li>
+        <li><a href="#amenities">Amenities</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#booking" class="nav-cta">Book Now</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="container hero-content">
+      <div class="hero-badge">★★★★★ 5-Star Luxury</div>
+      <h1>Welcome to <span>Ethans Hotel</span></h1>
+      <p>Experience unparalleled comfort and African hospitality in the heart of Gatunga, Kenya.</p>
+      <div class="hero-buttons">
+        <a href="#booking" class="btn btn-primary">Book Your Stay</a>
+        <a href="#about" class="btn btn-outline">Explore More</a>
+      </div>
+
+      <!-- Booking Widget -->
+      <div class="booking-widget" id="booking">
+        <div class="field">
+          <label><i class="fas fa-calendar-alt"></i> Check-in</label>
+          <input type="date" value="2026-07-13" />
+        </div>
+        <div class="field">
+          <label><i class="fas fa-calendar-alt"></i> Check-out</label>
+          <input type="date" value="2026-07-14" />
+        </div>
+        <div class="field">
+          <label><i class="fas fa-user"></i> Adults</label>
+          <select><option>1</option><option selected>2</option><option>3</option><option>4</option></select>
+        </div>
+        <div class="field">
+          <label><i class="fas fa-child"></i> Children</label>
+          <select><option selected>0</option><option>1</option><option>2</option></select>
+        </div>
+        <div class="field">
+          <label><i class="fas fa-door-open"></i> Rooms</label>
+          <select><option selected>1</option><option>2</option><option>3</option></select>
+        </div>
+        <button class="btn" onclick="alert('Booking system coming soon!')">Check Availability</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AMENITIES ===== -->
+  <section class="section-padding" id="amenities">
+    <div class="container">
+      <h2 class="section-title">Premium <span class="gold-accent">Amenities</span></h2>
+      <p class="section-subtitle">Everything you need for a perfect stay.</p>
+      <div class="amenities-grid">
+        <div class="amenity-card">
+          <i class="fas fa-utensils"></i>
+          <h4>Breakfast Included</h4>
+          <p>Daily自助 breakfast with local & international options.</p>
+        </div>
+        <div class="amenity-card">
+          <i class="fas fa-wifi"></i>
+          <h4>Free Wi-Fi</h4>
+          <p>High-speed internet throughout the hotel.</p>
+        </div>
+        <div class="amenity-card">
+          <i class="fas fa-parking"></i>
+          <h4>Free Parking</h4>
+          <p>Secure on-site parking for all guests.</p>
+        </div>
+        <div class="amenity-card">
+          <i class="fas fa-concierge-bell"></i>
+          <h4>24/7 Service</h4>
+          <p>Front desk & room service around the clock.</p>
+        </div>
+        <div class="amenity-card">
+          <i class="fas fa-swimming-pool"></i>
+          <h4>Outdoor Pool</h4>
+          <p>Relax with a view of the Kenyan landscape.</p>
+        </div>
+        <div class="amenity-card">
+          <i class="fas fa-spa"></i>
+          <h4>Spa & Wellness</h4>
+          <p>Rejuvenate with traditional treatments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ROOMS ===== -->
+  <section class="section-padding" id="rooms" style="background: var(--white);">
+    <div class="container">
+      <h2 class="section-title">Our <span class="gold-accent">Rooms</span></h2>
+      <p class="section-subtitle">Comfortable, elegant, and designed for your relaxation.</p>
+      <div class="rooms-grid">
+        <div class="room-card">
+          <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Standard Room" />
+          <div class="room-info">
+            <h3>Standard Room</h3>
+            <p>Cozy room with city view, ideal for solo travellers or couples.</p>
+            <div class="price">$120 <span>/ night</span></div>
+            <a href="#booking" class="btn btn-primary">Book Now</a>
+          </div>
+        </div>
+        <div class="room-card">
+          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Deluxe Room" />
+          <div class="room-info">
+            <h3>Deluxe Room</h3>
+            <p>Spacious room with premium furnishings and garden view.</p>
+            <div class="price">$180 <span>/ night</span></div>
+            <a href="#booking" class="btn btn-primary">Book Now</a>
+          </div>
+        </div>
+        <div class="room-card">
+          <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Suite" />
+          <div class="room-info">
+            <h3>Executive Suite</h3>
+            <p>Luxury suite with separate living area and panoramic views.</p>
+            <div class="price">$280 <span>/ night</span></div>
+            <a href="#booking" class="btn btn-primary">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="section-padding" id="about">
+    <div class="container about-grid">
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ethans Hotel Exterior" />
+      </div>
+      <div class="about-text">
+        <h2>About <span class="gold-accent">Ethans Hotel</span></h2>
+        <p>
+          Nestled in the serene landscape of <strong>Gatunga, Kenya</strong>, Ethans Hotel is a
+          <strong>5-star luxury destination</strong> that blends modern elegance with authentic
+          African warmth.
+        </p>
+        <p>
+          Every detail — from our gourmet breakfast to our 24/7 concierge service — is crafted
+          to make your stay unforgettable.
+        </p>
+        <ul class="feature-list">
+          <li><i class="fas fa-check-circle"></i> Prime location in Gatunga</li>
+          <li><i class="fas fa-check-circle"></i> Award-winning hospitality</li>
+          <li><i class="fas fa-check-circle"></i> Sustainable & eco-friendly practices</li>
+        </ul>
+        <a href="#booking" class="btn btn-dark" style="margin-top:16px;">Experience the Luxury</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="section-padding" id="testimonials" style="background: var(--white);">
+    <div class="container">
+      <h2 class="section-title">Guest <span class="gold-accent">Reviews</span></h2>
+      <p class="section-subtitle">What our guests say about their stay.</p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"An unforgettable experience! The staff, the food, the views — everything was perfect."</blockquote>
+          <div class="author">Sarah M. <span>— Nairobi</span></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Ethans Hotel is a hidden gem in Gatunga. The breakfast was incredible and the rooms are so comfortable."</blockquote>
+          <div class="author">James K. <span>— London</span></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"We loved every moment. The pool, the spa, and the warm hospitality made our trip magical."</blockquote>
+          <div class="author">Amina D. <span>— Dubai</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOCIAL FEED ===== -->
+  <section class="section-padding" id="social">
+    <div class="container" style="text-align:center;">
+      <h2 class="section-title">Follow <span class="gold-accent">Us</span></h2>
+      <p class="section-subtitle">Connect with us on social media for updates and offers.</p>
+      <div class="social-feed">
+        <a href="#" class="fb"><i class="fab fa-facebook-f"></i> Facebook</a>
+        <a href="#" class="ig"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="#" class="google"><i class="fab fa-google"></i> Google</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Ethans Hotel</h4>
+          <p>5-star luxury in the heart of Gatunga, Kenya. Where elegance meets African hospitality.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <a href="#rooms">Rooms</a><br />
+          <a href="#amenities">Amenities</a><br />
+          <a href="#about">About</a><br />
+          <a href="#booking">Book Now</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p><i class="fas fa-map-marker-alt" style="color:var(--gold);"></i> Gatunga, Kenya</p>
+          <p><i class="fas fa-phone" style="color:var(--gold);"></i> +254 700 000 000</p>
+          <p><i class="fas fa-envelope" style="color:var(--gold);"></i> info@ethanshotel.com</p>
+        </div>
+        <div>
+          <h4>Follow Us</h4>
+          <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a><br />
+          <a href="#"><i class="fab fa-instagram"></i> Instagram</a><br />
+          <a href="#"><i class="fab fa-google"></i> Google</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 Ethans Hotel. All rights reserved. | Designed with <i class="fas fa-heart" style="color:var(--gold);"></i> in Kenya
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    // Close menu on link click (mobile)
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+      });
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Date default to today + 1 day
+    document.addEventListener('DOMContentLoaded', function() {
+      const today = new Date();
+      const tomorrow = new Date(today);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+
+      const formatDate = (date) => {
+        return date.toISOString().split('T')[0];
+      };
+
+      const checkinInput = document.querySelector('.booking-widget input[type="date"]:first-of-type');
+      const checkoutInput = document.querySelector('.booking-widget input[type="date"]:last-of-type');
+
+      if (checkinInput && !checkinInput.value) {
+        checkinInput.value = formatDate(today);
+      }
+      if (checkoutInput && !checkoutInput.value) {
+        checkoutInput.value = formatDate(tomorrow);
+      }
+    });
+  </script>
+
+</body>
+</html>
